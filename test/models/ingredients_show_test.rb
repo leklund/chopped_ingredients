@@ -13,7 +13,7 @@
 
 require 'test_helper'
 
-class IngredientShowTest < ActiveSupport::TestCase
+class IngredientsShowTest < ActiveSupport::TestCase
   describe 'validations' do
     it 'has required fields' do
       subject = described_class.new

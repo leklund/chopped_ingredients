@@ -26,8 +26,11 @@ ActiveRecord::Schema.define(version: 20170109185436) do
 
   create_table "ingredients", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "appetizer",  default: false, null: false
+    t.boolean  "dessert",    default: false, null: false
+    t.boolean  "entree",     default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "ingredients_shows", id: false, force: :cascade do |t|

@@ -17,6 +17,7 @@ class Show < ApplicationRecord
   belongs_to :season
   has_and_belongs_to_many :judges
   has_many :contestants
+  has_many :ingredients_shows
   has_many :ingredients, through: :ingredients_shows
 
   validates :title, :date, :series_num, :season_id, presence: true

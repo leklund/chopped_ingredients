@@ -11,9 +11,7 @@
 #  index_ingredients_shows_on_show_id_and_ingredient_id  (show_id,ingredient_id)
 #
 
-class IngredientShow < ApplicationRecord
-  self.table_name = 'ingredients_shows'
-
+class IngredientsShow < ApplicationRecord
   belongs_to :ingredient
   belongs_to :show
 
