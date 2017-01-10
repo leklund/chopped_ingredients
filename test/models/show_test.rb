@@ -7,6 +7,7 @@
 #  date       :date
 #  notes      :text
 #  series_num :string
+#  season_num :integer
 #  season_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

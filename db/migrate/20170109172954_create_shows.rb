@@ -5,6 +5,7 @@ class CreateShows < ActiveRecord::Migration[5.0]
       t.date :date
       t.text :notes
       t.string :series_num
+      t.integer :season_num
       t.integer :season_id
 
       t.timestamps

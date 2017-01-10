@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170109185436) do
     t.date     "date"
     t.text     "notes"
     t.string   "series_num"
+    t.integer  "season_num"
     t.integer  "season_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
