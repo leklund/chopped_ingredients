@@ -1,0 +1,4 @@
+one:
+  email: foo@example.com
+  encrypted_password: abc123
+  remember_token: acb123
