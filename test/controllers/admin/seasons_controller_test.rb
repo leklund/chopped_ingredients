@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SeasonsControllerTest < ActionDispatch::IntegrationTest
+class Admin::SeasonsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @season = seasons(:one)
   end

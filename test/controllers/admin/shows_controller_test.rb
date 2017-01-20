@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShowsControllerTest < ActionDispatch::IntegrationTest
+class Admin::ShowsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @show = shows(:one)
   end

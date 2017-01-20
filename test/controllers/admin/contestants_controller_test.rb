@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ContestantsControllerTest < ActionDispatch::IntegrationTest
+class Admin::ContestantsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @contestant = contestants(:one)
   end
