@@ -6,43 +6,43 @@ class ContestantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get contestants_url
+    get admin_contestants_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_contestant_url
+    get new_admin_contestant_url
     assert_response :success
   end
 
   test "should create contestant" do
     assert_difference('Contestant.count') do
-      post contestants_url, params: { contestant: { description: @contestant.description, name: @contestant.name, placing: @contestant.placing, show_id: @contestant.show_id } }
+      post admin_contestants_url, params: { contestant: { description: @contestant.description, name: @contestant.name, placing: @contestant.placing, show_id: @contestant.show_id } }
     end
 
-    assert_redirected_to contestant_url(Contestant.last)
+    assert_redirected_to admin_contestant_url(Contestant.last)
   end
 
   test "should show contestant" do
-    get contestant_url(@contestant)
+    get admin_contestant_url(@contestant)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_contestant_url(@contestant)
+    get edit_admin_contestant_url(@contestant)
     assert_response :success
   end
 
   test "should update contestant" do
-    patch contestant_url(@contestant), params: { contestant: { description: @contestant.description, name: @contestant.name, placing: @contestant.placing, show_id: @contestant.show_id } }
-    assert_redirected_to contestant_url(@contestant)
+    patch admin_contestant_url(@contestant), params: { contestant: { description: @contestant.description, name: @contestant.name, placing: @contestant.placing, show_id: @contestant.show_id } }
+    assert_redirected_to admin_contestant_url(@contestant)
   end
 
   test "should destroy contestant" do
     assert_difference('Contestant.count', -1) do
-      delete contestant_url(@contestant)
+      delete admin_contestant_url(@contestant)
     end
 
-    assert_redirected_to contestants_url
+    assert_redirected_to admin_contestants_url
   end
 end

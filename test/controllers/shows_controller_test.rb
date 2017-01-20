@@ -6,43 +6,43 @@ class ShowsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get shows_url
+    get admin_shows_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_show_url
+    get new_admin_show_url
     assert_response :success
   end
 
   test "should create show" do
     assert_difference('Show.count') do
-      post shows_url, params: { show: { date: @show.date, notes: @show.notes, season_id: @show.season_id, series_num: @show.series_num, title: @show.title } }
+      post admin_shows_url, params: { show: { date: @show.date, notes: @show.notes, season_id: @show.season_id, series_num: @show.series_num, title: @show.title } }
     end
 
-    assert_redirected_to show_url(Show.last)
+    assert_redirected_to admin_show_url(Show.last)
   end
 
   test "should show show" do
-    get show_url(@show)
+    get admin_show_url(@show)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_show_url(@show)
+    get edit_admin_show_url(@show)
     assert_response :success
   end
 
   test "should update show" do
-    patch show_url(@show), params: { show: { date: @show.date, notes: @show.notes, season_id: @show.season_id, series_num: @show.series_num, title: @show.title } }
-    assert_redirected_to show_url(@show)
+    patch admin_show_url(@show), params: { show: { date: @show.date, notes: @show.notes, season_id: @show.season_id, series_num: @show.series_num, title: @show.title } }
+    assert_redirected_to admin_show_url(@show)
   end
 
   test "should destroy show" do
     assert_difference('Show.count', -1) do
-      delete show_url(@show)
+      delete admin_show_url(@show)
     end
 
-    assert_redirected_to shows_url
+    assert_redirected_to admin_shows_url
   end
 end

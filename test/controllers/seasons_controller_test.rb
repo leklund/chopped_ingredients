@@ -6,43 +6,43 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get seasons_url
+    get admin_seasons_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_season_url
+    get new_admin_season_url
     assert_response :success
   end
 
   test "should create season" do
     assert_difference('Season.count') do
-      post seasons_url, params: { season: { name: @season.name, number: @season.number } }
+      post admin_seasons_url, params: { season: { name: @season.name, number: @season.number } }
     end
 
-    assert_redirected_to season_url(Season.last)
+    assert_redirected_to admin_season_url(Season.last)
   end
 
   test "should show season" do
-    get season_url(@season)
+    get admin_season_url(@season)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_season_url(@season)
+    get edit_admin_season_url(@season)
     assert_response :success
   end
 
   test "should update season" do
-    patch season_url(@season), params: { season: { name: @season.name, number: @season.number } }
-    assert_redirected_to season_url(@season)
+    patch admin_season_url(@season), params: { season: { name: @season.name, number: @season.number } }
+    assert_redirected_to admin_season_url(@season)
   end
 
   test "should destroy season" do
     assert_difference('Season.count', -1) do
-      delete season_url(@season)
+      delete admin_season_url(@season)
     end
 
-    assert_redirected_to seasons_url
+    assert_redirected_to admin_seasons_url
   end
 end

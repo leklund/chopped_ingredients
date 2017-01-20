@@ -6,43 +6,43 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get ingredients_url
+    get admin_ingredients_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_ingredient_url
+    get new_admin_ingredient_url
     assert_response :success
   end
 
   test "should create ingredient" do
     assert_difference('Ingredient.count') do
-      post ingredients_url, params: { ingredient: { name: @ingredient.name } }
+      post admin_ingredients_url, params: { ingredient: { name: @ingredient.name } }
     end
 
-    assert_redirected_to ingredient_url(Ingredient.last)
+    assert_redirected_to admin_ingredient_url(Ingredient.last)
   end
 
   test "should show ingredient" do
-    get ingredient_url(@ingredient)
+    get admin_ingredient_url(@ingredient)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_ingredient_url(@ingredient)
+    get edit_admin_ingredient_url(@ingredient)
     assert_response :success
   end
 
   test "should update ingredient" do
-    patch ingredient_url(@ingredient), params: { ingredient: { name: @ingredient.name } }
-    assert_redirected_to ingredient_url(@ingredient)
+    patch admin_ingredient_url(@ingredient), params: { ingredient: { name: @ingredient.name } }
+    assert_redirected_to admin_ingredient_url(@ingredient)
   end
 
   test "should destroy ingredient" do
     assert_difference('Ingredient.count', -1) do
-      delete ingredient_url(@ingredient)
+      delete admin_ingredient_url(@ingredient)
     end
 
-    assert_redirected_to ingredients_url
+    assert_redirected_to admin_ingredients_url
   end
 end
