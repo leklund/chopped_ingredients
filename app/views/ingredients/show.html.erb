@@ -1,2 +1,20 @@
-<h1>Ingredients#show</h1>
-<p>Find me in app/views/ingredients/show.html.erb</p>
+<h1><%= @ingredient.name %></h1>
+
+<p>Appears on:</p>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Episode #</th>
+    <th>Season</th>
+    <th>Air date</th>
+    <th>Course</th>
+  </tr>
+  <% @shows.each do |show| %>
+    <tr>
+      <td><%= link_to show.title, show %></td>
+      <td><%= show.series_num %></td>
+      <td><%= show.season_num %></td>
+      <td><%= show.date %></td>
+      <td><%= show.round %></td>
+  <% end %>
+</ul>

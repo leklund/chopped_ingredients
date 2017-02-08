@@ -28,4 +28,16 @@ class Show < ApplicationRecord
   has_many :ingredients, through: :ingredients_shows
 
   validates :title, :date, :series_num, :season_id, presence: true
+
+  def self.for_ingredient(ingredient_id)
+    query = <<-EOL
+      SELECT s.*, ish.round
+      FROM shows s
+      JOIN ingredients_shows ish ON ish.show_id = s.id
+      WHERE ish.ingredient_id = ?
+      ORDER BY date
+    EOL
+
+    find_by_sql [query, ingredient_id]
+  end
 end
