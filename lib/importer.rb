@@ -89,7 +89,7 @@ class Importer
 
       # update if we need to
       show.title = episode_data[:show_name]
-      show.slug = slugify(show.title)
+      show.slug = slugify("#{show.series_num}-#{show.title}")
       show.date = episode_data[:airdate]
       show.notes = episode_data[:notes]
 
@@ -101,7 +101,7 @@ class Importer
       ### judges
       judges = episode_data[:judges].map do |judge|
                  next if judge.empty? || judge == 'N/A'
-                 Judge.find_or_create_by(name: judge, slug: slugify(judge))
+                 Judge.find_by(slug: slugify(judge)) || Judge.create(name: judge, slug: slugify(judge))
                end
       judges.compact!
 
@@ -114,7 +114,7 @@ class Importer
 
         ingredients.each do |i|
           next if i.empty? || i == 'N/A'
-          ingredient = Ingredient.find_or_create_by(name: i, slug: slugify(i))
+          ingredient = Ingredient.find_by(slug: slugify(i)) || Ingredient.create(name: i, slug: slugify(i))
           ingredient.update_attribute(course, true)
           IngredientsShow.find_or_create_by(ingredient_id: ingredient.id, show_id: show.id, round: course)
         end
@@ -124,9 +124,13 @@ class Importer
       episode_data[:contestants].each{ |c| c[:show_id] = show.id}
 
       episode_data[:contestants].each do |c|
-        contestant = Contestant.find_or_create_by(name: c[:name], slug: c[:slug])
+        contestant = Contestant.find_by(slug: c[:slug])
 
-        ContestantShows.find_or_create_by(contestant_id: contestant.id, show_id: show.id, description: c[:description], placing: c[:placing])
+        unless contestant
+          contestant = Contestant.create(name: c[:name], slug: c[:slug])
+        end
+
+        ContestantsShows.find_or_create_by(contestant_id: contestant.id, show_id: show.id, description: c[:description], placing: c[:placing])
       end
     end
   end
