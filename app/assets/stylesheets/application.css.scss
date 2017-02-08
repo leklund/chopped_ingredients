@@ -1,0 +1,23 @@
+@import 'normalize';
+
+body {
+  font-family: 'Bitter', serif;
+}
+
+@import 'bourbon';
+@import 'neat';
+@import 'base/base';
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import 'nav';
+@import 'contestants';
+@import 'ingredients';
+@import 'judges';
+@import 'shows';
+
+section {
+  @include outer-container;
+}
+

@@ -16,4 +16,12 @@ class Ingredient < ApplicationRecord
 
   has_many :ingredients_shows
   has_many :shows, through: :ingredients_shows
+
+
+  def self.all_with_stats
+    query = <<-EOL
+      select i.*, count(ish.ingredient_id) as usage_count from ingredients i join ingredients_shows ish on ish.ingredient_id = i.id GROUP BY i.id ORDER BY usage_count desc
+    EOL
+    find_by_sql(query)
+  end
 end

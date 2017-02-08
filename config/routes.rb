@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :ingredients, only: [:index, :show]
+  resources :contestants, only: [:index, :show]
+  resources :judges, only: [:index, :show]
+  resources :shows, only: [:index, :show]
+
+  root to: 'ingredients#index'
 
   namespace :admin do
     resources :seasons
@@ -8,7 +14,6 @@ Rails.application.routes.draw do
     resources :shows
 
     get '/' => '/admin#index'
-
   end
 
   # clearance
