@@ -24,7 +24,6 @@ class Ingredient < ApplicationRecord
   has_many :ingredients_shows
   has_many :shows, through: :ingredients_shows
 
-
   def self.all_with_stats
     query = <<-EOL
       SELECT i.*, count(ish.ingredient_id) as usage_count
@@ -34,5 +33,17 @@ class Ingredient < ApplicationRecord
       ORDER BY usage_count desc, i.slug
     EOL
     find_by_sql(query)
+  end
+
+  def similar
+    query = <<-EOL
+      WITH x as (SELECT i.*, similarity(?, name) as sim
+            FROM ingredients i
+            WHERE name <> ?
+            AND similarity(?, name) >= 0.25 )
+      SELECT * FROM x ORDER BY sim desc
+    EOL
+
+    Ingredient.find_by_sql [query, name, name, name]
   end
 end

@@ -2,13 +2,16 @@
 
 <p>Appears on:</p>
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Episode #</th>
-    <th>Season</th>
-    <th>Air date</th>
-    <th>Course</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Episode #</th>
+      <th>Season</th>
+      <th>Air date</th>
+      <th>Course</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @shows.each do |show| %>
     <tr>
       <td><%= link_to show.title, show %></td>
@@ -16,5 +19,15 @@
       <td><%= show.season_num %></td>
       <td><%= show.date %></td>
       <td><%= show.round %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>Related ingredients:</p>
+<ul>
+  <% @ingredient.similar.each do |i| %>
+    <li><%= link_to i.name, i %></li>
   <% end %>
 </ul>
+
