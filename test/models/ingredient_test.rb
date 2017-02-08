@@ -3,12 +3,17 @@
 # Table name: ingredients
 #
 #  id         :integer          not null, primary key
-#  name       :text
+#  name       :text             not null
+#  slug       :text             not null
 #  appetizer  :boolean          default("false"), not null
 #  dessert    :boolean          default("false"), not null
 #  entree     :boolean          default("false"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_ingredients_on_slug  (slug) UNIQUE
 #
 
 require 'test_helper'
@@ -23,6 +28,11 @@ class IngredientTest < ActiveSupport::TestCase
   end
 
   describe '.all_with_stats' do
+    before do
+      IngredientsShow.create(ingredient: Ingredient.first, show: Show.first, round: 'appetizer')
+      IngredientsShow.create(ingredient: Ingredient.last, show: Show.first, round: 'appetizer')
+    end
+
     it 'returns the ingredients with a count of usage' do
       res = Ingredient.all_with_stats
 

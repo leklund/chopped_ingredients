@@ -3,18 +3,25 @@
 # Table name: ingredients
 #
 #  id         :integer          not null, primary key
-#  name       :text
+#  name       :text             not null
+#  slug       :text             not null
 #  appetizer  :boolean          default("false"), not null
 #  dessert    :boolean          default("false"), not null
 #  entree     :boolean          default("false"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_ingredients_on_slug  (slug) UNIQUE
+#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   name: MyText
+  slug: mytext
 
 two:
-  name: MyText
+  name: MyText2
+  slug: mytext2

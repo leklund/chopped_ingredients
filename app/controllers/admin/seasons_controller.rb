@@ -64,11 +64,11 @@ class Admin::SeasonsController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_season
-      @season = Season.find(params[:id])
+      @season = Season.find_by(slug: params[:slug])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def season_params
-      params.require(:season).permit(:name, :number)
+      params.require(:season).permit(:name, :number, :slug)
     end
 end

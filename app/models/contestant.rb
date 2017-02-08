@@ -2,18 +2,18 @@
 #
 # Table name: contestants
 #
-#  id          :integer          not null, primary key
-#  name        :text
-#  description :text
-#  show_id     :integer
-#  placing     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  name       :text             not null
+#  slug       :text             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_contestants_on_slug  (slug) UNIQUE
 #
 
 class Contestant < ApplicationRecord
-  belongs_to :show
-
-  validates :name, :show_id, :placing, presence: true
-  validates :placing, inclusion: { in: [1, 2, 3, 4] }
+  include Slugger
+  validates :name, :slug, presence: true
 end

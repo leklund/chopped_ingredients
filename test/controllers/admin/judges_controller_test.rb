@@ -17,7 +17,7 @@ class Admin::JudgesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create judge" do
     assert_difference('Judge.count') do
-      post admin_judges_url, params: { judge: { name: @judge.name } }
+      post admin_judges_url, params: { judge: { name: @judge.name, slug: SecureRandom.hex(12) } }
     end
 
     assert_redirected_to admin_judge_url(Judge.last)

@@ -17,7 +17,7 @@ class Admin::ContestantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create contestant" do
     assert_difference('Contestant.count') do
-      post admin_contestants_url, params: { contestant: { description: @contestant.description, name: @contestant.name, placing: @contestant.placing, show_id: @contestant.show_id } }
+      post admin_contestants_url, params: { contestant: { name: @contestant.name, slug: SecureRandom.hex(12) } }
     end
 
     assert_redirected_to admin_contestant_url(Contestant.last)
@@ -34,7 +34,7 @@ class Admin::ContestantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update contestant" do
-    patch admin_contestant_url(@contestant), params: { contestant: { description: @contestant.description, name: @contestant.name, placing: @contestant.placing, show_id: @contestant.show_id } }
+    patch admin_contestant_url(@contestant), params: { contestant: { name: @contestant.name, slug: @contestant.slug } }
     assert_redirected_to admin_contestant_url(@contestant)
   end
 

@@ -3,9 +3,14 @@
 # Table name: judges
 #
 #  id         :integer          not null, primary key
-#  name       :text
+#  name       :text             not null
+#  slug       :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_judges_on_slug  (slug) UNIQUE
 #
 
 require 'test_helper'

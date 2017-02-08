@@ -64,11 +64,11 @@ class Admin::ShowsController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_show
-      @show = Show.find(params[:id])
+      @show = Show.find_by(slug: params[:slug])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
-      params.require(:show).permit(:title, :date, :notes, :series_num, :season_id)
+      params.require(:show).permit(:title, :date, :notes, :series_num, :season_id, :slug)
     end
 end

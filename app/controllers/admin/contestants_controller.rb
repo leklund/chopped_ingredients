@@ -64,11 +64,11 @@ class Admin::ContestantsController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contestant
-      @contestant = Contestant.find(params[:id])
+      @contestant = Contestant.find_by(slug: params[:slug])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contestant_params
-      params.require(:contestant).permit(:name, :description, :show_id, :placing)
+      params.require(:contestant).permit(:name, :slug)
     end
 end

@@ -10,27 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120202435) do
+ActiveRecord::Schema.define(version: 20170208190003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contestants", force: :cascade do |t|
-    t.text     "name"
-    t.text     "description"
-    t.integer  "show_id"
-    t.integer  "placing"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "name",       null: false
+    t.text     "slug",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_contestants_on_slug", unique: true, using: :btree
+  end
+
+  create_table "contestants_shows", id: false, force: :cascade do |t|
+    t.integer "contestant_id", null: false
+    t.integer "show_id",       null: false
+    t.string  "description"
+    t.integer "placing"
+    t.index ["show_id", "contestant_id"], name: "index_contestants_shows_on_show_id_and_contestant_id", using: :btree
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.text     "name"
+    t.text     "name",                       null: false
+    t.text     "slug",                       null: false
     t.boolean  "appetizer",  default: false, null: false
     t.boolean  "dessert",    default: false, null: false
     t.boolean  "entree",     default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["slug"], name: "index_ingredients_on_slug", unique: true, using: :btree
   end
 
   create_table "ingredients_shows", id: false, force: :cascade do |t|
@@ -41,9 +50,11 @@ ActiveRecord::Schema.define(version: 20170120202435) do
   end
 
   create_table "judges", force: :cascade do |t|
-    t.text     "name"
+    t.text     "name",       null: false
+    t.text     "slug",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_judges_on_slug", unique: true, using: :btree
   end
 
   create_table "judges_shows", id: false, force: :cascade do |t|
@@ -53,21 +64,25 @@ ActiveRecord::Schema.define(version: 20170120202435) do
   end
 
   create_table "seasons", force: :cascade do |t|
-    t.text     "name"
+    t.text     "name",       null: false
+    t.text     "slug",       null: false
     t.string   "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_seasons_on_slug", unique: true, using: :btree
   end
 
   create_table "shows", force: :cascade do |t|
-    t.text     "title"
-    t.date     "date"
+    t.text     "title",      null: false
+    t.date     "date",       null: false
     t.text     "notes"
+    t.text     "slug",       null: false
     t.string   "series_num"
     t.integer  "season_num"
     t.integer  "season_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_shows_on_slug", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

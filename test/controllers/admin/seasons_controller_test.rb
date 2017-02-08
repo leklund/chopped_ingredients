@@ -17,7 +17,7 @@ class Admin::SeasonsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create season" do
     assert_difference('Season.count') do
-      post admin_seasons_url, params: { season: { name: @season.name, number: @season.number } }
+      post admin_seasons_url, params: { season: { name: @season.name, number: @season.number, slug: SecureRandom.hex(12) } }
     end
 
     assert_redirected_to admin_season_url(Season.last)

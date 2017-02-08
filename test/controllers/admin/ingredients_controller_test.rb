@@ -17,7 +17,7 @@ class Admin::IngredientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create ingredient" do
     assert_difference('Ingredient.count') do
-      post admin_ingredients_url, params: { ingredient: { name: @ingredient.name } }
+      post admin_ingredients_url, params: { ingredient: { name: @ingredient.name, slug: SecureRandom.hex(12) } }
     end
 
     assert_redirected_to admin_ingredient_url(Ingredient.last)

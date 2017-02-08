@@ -64,11 +64,11 @@ class Admin::JudgesController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_judge
-      @judge = Judge.find(params[:id])
+      @judge = Judge.find_by(slug: params[:slug])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def judge_params
-      params.require(:judge).permit(:name)
+      params.require(:judge).permit(:name, :slug)
     end
 end

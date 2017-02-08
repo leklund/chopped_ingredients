@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  resources :ingredients, only: [:index, :show]
-  resources :contestants, only: [:index, :show]
-  resources :judges, only: [:index, :show]
-  resources :shows, only: [:index, :show]
+  resources :ingredients, only: [:index, :show], param: :slug
+  resources :contestants, only: [:index, :show], param: :slug
+  resources :judges, only: [:index, :show], param: :slug
+  resources :shows, only: [:index, :show], param: :slug
 
   root to: 'ingredients#index'
 
   namespace :admin do
-    resources :seasons
-    resources :contestants
-    resources :judges
-    resources :ingredients
-    resources :shows
+    resources :seasons, param: :slug
+    resources :contestants, param: :slug
+    resources :judges, param: :slug
+    resources :ingredients, param: :slug
+    resources :shows, param: :slug
 
     get '/' => '/admin#index'
   end

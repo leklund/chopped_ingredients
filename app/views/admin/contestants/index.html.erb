@@ -17,9 +17,7 @@
     <% @contestants.each do |contestant| %>
       <tr>
         <td><%= contestant.name %></td>
-        <td><%= contestant.description %></td>
-        <td><%= contestant.show_id %></td>
-        <td><%= contestant.placing %></td>
+        <td><%= contestant.slug %></td>
         <td><%= link_to 'Show', admin_contestant_path(contestant) %></td>
         <td><%= link_to 'Edit', edit_admin_contestant_path(contestant) %></td>
         <td><%= link_to 'Destroy', admin_contestant_path(contestant), method: :delete, data: { confirm: 'Are you sure?' } %></td>

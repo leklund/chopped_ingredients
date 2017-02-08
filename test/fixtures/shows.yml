@@ -3,14 +3,19 @@
 # Table name: shows
 #
 #  id         :integer          not null, primary key
-#  title      :text
-#  date       :date
+#  title      :text             not null
+#  date       :date             not null
 #  notes      :text
+#  slug       :text             not null
 #  series_num :string
 #  season_num :integer
 #  season_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_shows_on_slug  (slug) UNIQUE
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -19,6 +24,7 @@ one:
   id: 1
   title: Show One
   date: 2017-01-01
+  slug: show_one
   notes: Cabbage
   series_num: 1
   season_num: 1
@@ -27,6 +33,7 @@ one:
 two:
   id: 2
   title: Show Tow
+  slug: show_two
   date: 2017-01-02
   notes: Beets
   series_num: 2

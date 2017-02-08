@@ -1,6 +1,5 @@
 <h1>Chopped Basket Ingredients:</h1>
 
-
 <table>
   <tr>
     <th style='width:50%'>Ingredient</th>
@@ -11,7 +10,7 @@
   </tr>
   <% @ingredients.each do |ingredient| %>
     <tr>
-      <td><%= ingredient.name %>
+      <td><%= link_to ingredient.name, ingredient %>
       <td class='centered'><%= ingredient.usage_count %>
       <td class='centered'><%= ingredient.appetizer ? icon('check-circle') : '' %></td>
       <td class='centered'><%= ingredient.entree ? icon('check-circle') : '' %></td>
@@ -19,6 +18,3 @@
     </tr>
   <% end %>
 </table>
-
-
-<p>put the ingredients here</p>

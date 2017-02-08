@@ -31,6 +31,7 @@ class Importer
 
       {
         name: m[1],
+        slug: slugify(m[1]),
         description: m[2],
         placing: i + 1,
       }
@@ -88,6 +89,7 @@ class Importer
 
       # update if we need to
       show.title = episode_data[:show_name]
+      show.slug = slugify(show.title)
       show.date = episode_data[:airdate]
       show.notes = episode_data[:notes]
 
@@ -99,7 +101,7 @@ class Importer
       ### judges
       judges = episode_data[:judges].map do |judge|
                  next if judge.empty? || judge == 'N/A'
-                 Judge.find_or_create_by(name: judge)
+                 Judge.find_or_create_by(name: judge, slug: slugify(judge))
                end
       judges.compact!
 
@@ -112,7 +114,7 @@ class Importer
 
         ingredients.each do |i|
           next if i.empty? || i == 'N/A'
-          ingredient = Ingredient.find_or_create_by(name: i)
+          ingredient = Ingredient.find_or_create_by(name: i, slug: slugify(i))
           ingredient.update_attribute(course, true)
           IngredientsShow.find_or_create_by(ingredient_id: ingredient.id, show_id: show.id, round: course)
         end
@@ -121,12 +123,20 @@ class Importer
       ### contestants
       episode_data[:contestants].each{ |c| c[:show_id] = show.id}
 
-      episode_data[:contestants].each{ |c| Contestant.find_or_create_by c }
+      episode_data[:contestants].each do |c|
+        contestant = Contestant.find_or_create_by(name: c[:name], slug: c[:slug])
+
+        ContestantShows.find_or_create_by(contestant_id: contestant.id, show_id: show.id, description: c[:description], placing: c[:placing])
+      end
     end
   end
 
   def setup_season(header)
     number = header.scan(/\s+(\d+)\s+/).flatten.first
-    @season = Season.find_or_create_by(name: header, number: number)
+    @season = Season.find_or_create_by(name: header, slug: slugify(header), number: number)
+  end
+
+  def slugify(txt)
+    txt.parameterize(separator: '_')
   end
 end

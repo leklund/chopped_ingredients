@@ -2,25 +2,23 @@
 #
 # Table name: contestants
 #
-#  id          :integer          not null, primary key
-#  name        :text
-#  description :text
-#  show_id     :integer
-#  placing     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  name       :text             not null
+#  slug       :text             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_contestants_on_slug  (slug) UNIQUE
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   name: MyText
-  description: MyText
-  show_id: 1
-  placing: 1
+  slug: mytext
 
 two:
-  name: MyText
-  description: MyText
-  show_id: 2
-  placing: 1
+  name: MyText2
+  slug: mytext2

@@ -3,14 +3,19 @@
 # Table name: shows
 #
 #  id         :integer          not null, primary key
-#  title      :text
-#  date       :date
+#  title      :text             not null
+#  date       :date             not null
 #  notes      :text
+#  slug       :text             not null
 #  series_num :string
 #  season_num :integer
 #  season_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_shows_on_slug  (slug) UNIQUE
 #
 
 require 'test_helper'
