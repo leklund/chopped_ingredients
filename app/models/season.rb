@@ -6,6 +6,7 @@
 #  name       :text             not null
 #  slug       :text             not null
 #  number     :string
+#  sort       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -16,4 +17,6 @@
 
 class Season < ApplicationRecord
   include Slugger
+
+  has_many :shows
 end

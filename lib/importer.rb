@@ -137,7 +137,17 @@ class Importer
 
   def setup_season(header)
     number = header.scan(/\s+(\d+)\s+/).flatten.first
-    @season = Season.find_or_create_by(name: header, slug: slugify(header), number: number)
+    rank = case
+           when header.match?(/^Season/)
+             1
+           when header.match?(/^Specials/)
+             2
+           when header.match?(/^Chopped Junior/)
+             3
+           else
+             4
+           end
+    @season = Season.find_or_create_by(name: header, slug: slugify(header), number: number, sort: rank)
   end
 
   def slugify(txt)

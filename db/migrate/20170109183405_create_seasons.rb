@@ -4,6 +4,7 @@ class CreateSeasons < ActiveRecord::Migration[5.0]
       t.text :name, null: false
       t.text :slug, null: false
       t.string :number
+      t.integer :sort
 
       t.timestamps
     end

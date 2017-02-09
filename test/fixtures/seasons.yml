@@ -6,6 +6,7 @@
 #  name       :text             not null
 #  slug       :text             not null
 #  number     :string
+#  sort       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

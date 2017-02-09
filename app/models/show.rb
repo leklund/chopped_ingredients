@@ -40,4 +40,8 @@ class Show < ApplicationRecord
 
     find_by_sql [query, ingredient_id]
   end
+
+  def all_ingredients
+    ingredients_shows.select('*').joins(:ingredient)
+  end
 end

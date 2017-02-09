@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170208190003) do
     t.text     "name",       null: false
     t.text     "slug",       null: false
     t.string   "number"
+    t.integer  "sort"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_seasons_on_slug", unique: true, using: :btree
