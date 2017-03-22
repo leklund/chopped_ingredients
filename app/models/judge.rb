@@ -19,4 +19,15 @@ class Judge < ApplicationRecord
   has_and_belongs_to_many :shows
 
   validates :name, presence: true
+
+  def self.all_by_appearances
+    query = <<-EOL
+      SELECT j.*, count(s.judge_id) as appearances
+      FROM judges j
+      JOIN judges_shows s ON (s.judge_id = j.id)
+      GROUP BY j.id ORDER BY appearances desc
+    EOL
+
+    find_by_sql query
+  end
 end

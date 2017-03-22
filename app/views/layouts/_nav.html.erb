@@ -10,10 +10,10 @@
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
-        <li class="nav-link"><a href="javascript:void(0)">Ingredients</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">Judges</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">Contestants</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">Shows</a></li>
+        <li class="nav-link"><%= link_to 'Ingredients', ingredients_path %></li>
+        <li class="nav-link"><%= link_to 'Shows', shows_path %></li>
+        <li class="nav-link"><%= link_to 'Judges', judges_path %></li>
+        <li class="nav-link"><%= link_to 'Contestants', contestants_path %></li>
       </ul>
     </nav>
     <div class="navigation-tools">

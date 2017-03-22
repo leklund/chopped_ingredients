@@ -1,0 +1,18 @@
+<h1>Chopped: List of Judges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Apperances</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @judges.each do |judge| %>
+      <tr>
+        <td><%= link_to judge.name, judge %></td>
+        <td><%= judge.appearances %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
