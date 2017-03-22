@@ -12,7 +12,7 @@
 #  index_contestants_shows_on_show_id_and_contestant_id  (show_id,contestant_id)
 #
 
-class ContestantsShows < ApplicationRecord
+class ContestantsShow < ApplicationRecord
   belongs_to :contestant
   belongs_to :show
 

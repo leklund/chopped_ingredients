@@ -14,7 +14,7 @@
 
 require 'test_helper'
 
-class ContestantsShowsTest < ActiveSupport::TestCase
+class ContestantsShowTest < ActiveSupport::TestCase
   describe 'validations' do
     it 'validates placing' do
       contestant = Contestant.first

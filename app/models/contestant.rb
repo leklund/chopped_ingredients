@@ -15,5 +15,8 @@
 
 class Contestant < ApplicationRecord
   include Slugger
+  has_many :contestants_shows
+  has_many :shows, through: :contestants_shows
+
   validates :name, :slug, presence: true
 end

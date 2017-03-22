@@ -1,1 +1,66 @@
-<%= @show.title %>
+<h1 class='page_title'><%= @show.title %> (<%= @show.date %>)</h1>
+<p>
+Episode: <%= @show.series_num %>, <%= @show.season&.name%>
+</p>
+
+<% if @show.notes %>
+  <h2>Notes:</h2>
+  <p>
+    <%= @show.notes %>
+  </p>
+<% end %>
+
+
+<h2>Ingredients:</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Appetizer</th>
+      <th>Entr&eacute;e</th>
+      <th>Dessert</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <% @ingredients.select{ |i| i.round == 'appetizer'}.each do |ingredient| %>
+            <li><%= link_to ingredient.ingredient.name, ingredient.ingredient %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <% @ingredients.select{ |i| i.round == 'entree'}.each do |ingredient| %>
+            <li><%= link_to ingredient.ingredient.name, ingredient.ingredient %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <% @ingredients.select{ |i| i.round == 'dessert'}.each do |ingredient| %>
+            <li><%= link_to ingredient.ingredient.name, ingredient.ingredient %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Judges:</h2>
+<ul class='default'>
+  <% @show.judges.sort_by{ |j| j.name }.each do |judge| %>
+    <li><%= link_to judge.name, judge %></li>
+  <% end %>
+</ul>
+
+<h2>Contestants:</h2>
+<ul class='default'>
+  <% @show.contestants.sort_by{ |c| c.name }.each do |contestant| %>
+    <li><%= link_to contestant.name, contestant %></li>
+  <% end %>
+</ul>
+
+
