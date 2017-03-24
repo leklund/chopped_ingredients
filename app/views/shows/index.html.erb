@@ -8,23 +8,17 @@
     <thead>
       <tr>
         <th>Title</th>
-        <th>Judges</th>
+        <th>Air Date</th>
         <th>Appetzier</th>
         <th>Entr&eacute;e</th>
         <th>Dessert</th>
       </tr>
     </thead>
     <tbody>
-      <% season.shows.includes(:judges, :ingredients_shows, :ingredients).each do |show| %>
+      <% season.shows.includes(:ingredients_shows, :ingredients).each do |show| %>
         <tr>
           <td><%= link_to show.title, show %></td>
-          <td>
-            <ul>
-              <% show.judges.each do |judge| %>
-                <li><%= link_to judge.name, judge %></li>
-              <% end %>
-            </ul>
-          </td>
+          <td><%= show.date %></td>
           <% %w(appetizer entree dessert).each do |round| %>
             <td>
               <ul>
@@ -38,5 +32,5 @@
         </tr>
       <% end %>
     </tbody>
-    </table>
+  </table>
 <% end %>
