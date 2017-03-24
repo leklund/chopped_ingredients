@@ -36,14 +36,22 @@ class Ingredient < ApplicationRecord
   end
 
   def similar
+    self.class.search(name)
+  end
+
+  def self.search(search)
+    search ||= name
     query = <<-EOL
-      WITH x as (SELECT i.*, similarity(?, name) as sim
+      WITH x as (SELECT i.*, count(ish.ingredient_id) as usage_count, similarity(?, name) as sim
             FROM ingredients i
+              JOIN ingredients_shows ish ON ish.ingredient_id = i.id
             WHERE name <> ?
-            AND similarity(?, name) >= 0.25 )
+            AND similarity(?, name) >= 0.25
+            GROUP BY i.id
+            )
       SELECT * FROM x ORDER BY sim desc
     EOL
 
-    Ingredient.find_by_sql [query, name, name, name]
+    Ingredient.find_by_sql [query, search, search, search]
   end
 end

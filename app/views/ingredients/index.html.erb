@@ -1,5 +1,8 @@
 <h1>Chopped Basket Ingredients:</h1>
 
+<% if params[:search] %>
+  <p>Search query: <%= params[:search] %></p>
+<% end %>
 <table>
   <tr>
     <th style='width:50%'>Ingredient</th>

@@ -1,6 +1,10 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all_with_stats
+    if params[:search]
+      @ingredients = Ingredient.search(params[:search])
+    else
+      @ingredients = Ingredient.all_with_stats
+    end
   end
 
   def show
