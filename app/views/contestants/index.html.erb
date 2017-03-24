@@ -1,0 +1,18 @@
+<h1>Chopped: List of Contestants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Appears on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contestants.each do |contestant| %>
+      <tr>
+        <td><%= link_to contestant.name, contestant %></td>
+        <td><%= raw contestant.shows.map{ |show| link_to show.title, show}.join ', ' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

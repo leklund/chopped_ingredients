@@ -1,0 +1,13 @@
+<h1 class='page_title'>Contestant: <%= @contestant.name %></h1>
+
+
+<h2>Appears on:</h2>
+
+<% @contestant.contestants_shows.each do |cshow| %>
+  <ul>
+    <li><%= link_to cshow.show.title, cshow.show %></li>
+    <li>Place: <%= cshow.placing.ordinalize %></li>
+    <% if cshow.description.present? %><li>Description: <%= cshow.description %></li><% end %>
+  </ul>
+  <hr>
+<% end %>
