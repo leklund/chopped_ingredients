@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: chopped_production
+  database: chopped
   username: chopped
-  password: <%= ENV['CHOPPED_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.secrets[:database][:password] %>
