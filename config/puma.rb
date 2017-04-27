@@ -1,5 +1,10 @@
-pidfile '/opt/apps/chopped/current/tmp/puma/pid'
-state_path '/opt/apps/chopped/current/tmp/puma/state'
+app_dir = File.expand_path("../..", __FILE__)
+puma_dir = "#{app_dir}/tmp/puma"
+
+bind "unix://#{puma_dir}/puma.sock"
+
+pidfile "#{puma_dir}/pid"
+state_path "#{puma_dir}/state"
 activate_control_app
 
 # Puma can serve each request in a thread from an internal thread pool.
@@ -13,10 +18,9 @@ threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+port        ENV.fetch("PORT") { 4242 }
 
 # Specifies the `environment` that Puma will run in.
-#
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the number of `workers` to boot in clustered mode.
