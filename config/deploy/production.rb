@@ -13,3 +13,4 @@ server 'basketingredients.com', user: 'chopped', roles: %w{app db web}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/puma', 'tmp/cache', 'tmp/sockets')
