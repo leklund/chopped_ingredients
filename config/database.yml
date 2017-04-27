@@ -82,4 +82,4 @@ production:
   <<: *default
   database: chopped
   username: chopped
-  password: <%= Rails.application.secrets[:database][:password] %>
+  password: <%= Rails.application.secrets.dig(:database, :password) %>
