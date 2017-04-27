@@ -1,5 +1,5 @@
-pidfile '/opt/apps/chopped/current/tmp/puma/pid'
-state_path '/opt/apps/chopped/current/tmp/puma/state'
+pidfile '/opt/apps/chopped/tmp/puma/pid'
+state_path '/opt/apps/chopped/tmp/puma/state'
 activate_control_app
 
 # Puma can serve each request in a thread from an internal thread pool.
