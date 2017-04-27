@@ -58,9 +58,9 @@ Episode: <%= @show.series_num %>, <%= @show.season&.name%>
 
 <h2>Contestants:</h2>
 <ul class='default'>
-  <% @show.contestants.sort_by{ |c| c.name }.each do |contestant| %>
-    <li><%= link_to contestant.name, contestant %></li>
+  <% @contestants.each do |contestant| %>
+    <li><%= contestant.placing.ordinalize %> - <%= link_to contestant.name, contestant_path(slug: contestant.slug) %> -
+    <%= contestant.description %>
+  </li>
   <% end %>
 </ul>
-
-

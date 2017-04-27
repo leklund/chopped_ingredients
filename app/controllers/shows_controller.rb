@@ -6,5 +6,6 @@ class ShowsController < ApplicationController
   def show
     @show = Show.find_by(slug: params[:slug])
     @ingredients = @show.all_ingredients
+    @contestants = @show.all_contestants
   end
 end

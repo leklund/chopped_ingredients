@@ -45,4 +45,8 @@ class Show < ApplicationRecord
   def all_ingredients
     ingredients_shows.select('*').joins(:ingredient)
   end
+
+  def all_contestants
+    contestants_shows.select('*').joins(:contestant).order(:placing)
+  end
 end
