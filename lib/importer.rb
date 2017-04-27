@@ -130,7 +130,7 @@ class Importer
           contestant = Contestant.create(name: c[:name], slug: c[:slug])
         end
 
-        ContestantsShows.find_or_create_by(contestant_id: contestant.id, show_id: show.id, description: c[:description], placing: c[:placing])
+        ContestantsShow.find_or_create_by(contestant_id: contestant.id, show_id: show.id, description: c[:description], placing: c[:placing])
       end
     end
   end
